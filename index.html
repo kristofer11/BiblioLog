@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Manager</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div>
+        <h1 class="text-center">My Library</h1>
+    </div>
+
+    <div class="newBookForm">
+        <form>
+            <div class="form-group">
+                <input id="titleInput" type="text" name="title" placeholder="Title">
+                <input id="authorInput" type="text" name="title" placeholder="author">
+                <input id="pagesInput" type="number" min="1" value="10">
+            </div>
+            <!-- <div class="form-group">
+                <input type="radio" id="read" name="read" value="bookIsRead">
+                <label for="read">Read</label>
+                <input type="radio" id="notRead" name="read" value="bookNotRead">
+                <label for="notRead">Not Read</label>
+            </div> -->
+            <button type="submit" id="submitButton">ADD BOOK</button>
+
+        </form>
+
+
+    </div>
+
+    <div id="libraryDisplayContainer">
+
+    </div>
+
+    <script src="index.js">
+    </script>
+</body>
+
+</html>
