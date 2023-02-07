@@ -6,48 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Manager</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div>
-        <h1 class="text-center">My Library</h1>
+        <h1 class="page-title">My Library</h1>
     </div>
-
-    <div class="newBookForm">
-        <form>
-            <div class="form-group">
-                <input id="titleInput" type="text" name="title" placeholder="Title">
-                <input id="authorInput" type="text" name="title" placeholder="author">
-                <input id="pagesInput" type="number" min="1" value="10">
-            </div>
-            <!-- <div class="form-group">
-                <input type="radio" id="read" name="read" value="bookIsRead">
-                <label for="read">Read</label>
-                <input type="radio" id="notRead" name="read" value="bookNotRead">
-                <label for="notRead">Not Read</label>
-            </div> -->
-            <button type="submit" id="submitButton">ADD BOOK</button>
-        </form>
+    <div class="addButtonDiv">
+            <button id="openModalButton">Add Book</button>
     </div>
-    <button id="openModalButton">Add Book</button>
     <div class="modal" id="modal">
         <div class="modal-header">
             <div class="title">Add Book</div>
             <button id="closeModalButton" class="close-button">&times;</button>
         </div>
-        <div class="modal-body">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius culpa cumque unde voluptatibus est sapiente
-            impedit eos tenetur, necessitatibus facilis quisquam facere magni error soluta libero esse suscipit velit
-            vel id laboriosam officia in iure. Aperiam repellendus, fuga odio quod ad quam aliquid provident. Modi earum
-            maxime ullam reiciendis exercitationem, cumque eos optio eius nihil explicabo sequi incidunt, possimus quod
-            dolorum magnam molestias in. Delectus odit aliquid deleniti vitae sunt eum iusto, quis explicabo. Ipsum
-            expedita consequatur aliquam ad accusantium!
+        <div class="newBookForm modal-body">
+            <form>
+                <div class="form-group">
+                    <input class="form-group-input" id="titleInput" type="text" name="title" placeholder="Title">
+                    <input class="form-group-input" id="authorInput" type="text" name="title" placeholder="author">
+                    <input class="form-group-input" id="pagesInput" type="number" min="1" value="10">
+                </div>
+                <!-- <div class="form-group">
+                    <input type="radio" id="read" name="read" value="bookIsRead">
+                    <label for="read">Read</label>
+                    <input type="radio" id="notRead" name="read" value="bookNotRead">
+                    <label for="notRead">Not Read</label>
+                </div> -->
+                <button type="submit" id="submitButton">ADD BOOK</button>
+            </form>
         </div>
     </div>
     <div id="overlay""></div>
-    <div id=" libraryDisplayContainer"></div>
+    <div id="libraryDisplayContainer"></div>
 
     <script src="index.js">
     </script>
