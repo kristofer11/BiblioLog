@@ -114,6 +114,40 @@ const removeBook = (title) => {
     console.log(myLibrary);
 };
 
+const openModalButton = document.querySelector('#openModalButton');
+const closeModalButton = document.querySelector('#closeModalButton');
+const overlay = document.querySelector('#overlay');
+
+openModalButton.addEventListener('click', () => {
+    const modal = document.querySelector('#modal');
+    openModal(modal)
+});
+
+overlay.addEventListener('click', () => {
+    const modals = document.querySelectorAll('.modal.active');
+    modals.forEach(modal => {
+        closeModal(modal)
+    })
+})
+
+closeModalButton.addEventListener('click', () => {
+    const modal = document.querySelector('#modal')
+    closeModal(modal);
+});
+
+function openModal(modal) {
+    if (modal == null) return;
+    modal.classList.add('active');
+    overlay.classList.add('active');
+};
+
+function closeModal(modal) {
+    if (modal == null) return;
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
+};
+
+
 populateLibrary();
 console.log(myLibrary);
 

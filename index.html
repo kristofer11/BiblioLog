@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Manager</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -30,15 +29,25 @@
                 <label for="notRead">Not Read</label>
             </div> -->
             <button type="submit" id="submitButton">ADD BOOK</button>
-
         </form>
-
-
     </div>
-
-    <div id="libraryDisplayContainer">
-
+    <button id="openModalButton">Add Book</button>
+    <div class="modal" id="modal">
+        <div class="modal-header">
+            <div class="title">Add Book</div>
+            <button id="closeModalButton" class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius culpa cumque unde voluptatibus est sapiente
+            impedit eos tenetur, necessitatibus facilis quisquam facere magni error soluta libero esse suscipit velit
+            vel id laboriosam officia in iure. Aperiam repellendus, fuga odio quod ad quam aliquid provident. Modi earum
+            maxime ullam reiciendis exercitationem, cumque eos optio eius nihil explicabo sequi incidunt, possimus quod
+            dolorum magnam molestias in. Delectus odit aliquid deleniti vitae sunt eum iusto, quis explicabo. Ipsum
+            expedita consequatur aliquam ad accusantium!
+        </div>
     </div>
+    <div id="overlay""></div>
+    <div id=" libraryDisplayContainer"></div>
 
     <script src="index.js">
     </script>
