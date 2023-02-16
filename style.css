@@ -47,12 +47,15 @@
 }
 
 .deleteBtn {
-
-    background-color: orange;
+    background-color: orangered;
     font-size: 1rem;
     border-radius: 4px;
     box-shadow: 2px 2px 2px 1px;
     cursor: pointer;
+}
+
+.readBtn {
+    background-color: green;
 }
 
 .modal {

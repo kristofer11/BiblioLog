@@ -83,6 +83,7 @@ const populateLibrary = () => {
         deleteBtn.textContent = 'Delete Book';
         deleteBtn.classList.add('deleteBtn');
         readBtn.textContent = 'Mark as "read"';
+        readBtn.classList.add('readBtn')
 
         title.textContent = `Title: ${book.title}`;
         author.textContent = `Author: ${book.author}`;
