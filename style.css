@@ -56,6 +56,11 @@
 
 .readBtn {
     background-color: green;
+    font-size: 1rem;
+    border-radius: 4px;
+    box-shadow: 2px 2px 2px 1px;
+    cursor: pointer;
+    margin-bottom: .5rem;
 }
 
 .modal {
@@ -132,7 +137,7 @@
     pointer-events: all;
 }
 
-.deleteBtn:hover {
+.deleteBtn:hover, .readBtn:hover {
     transform: scale(1.15);
     background-color: black;
     color: white;
