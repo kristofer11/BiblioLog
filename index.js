@@ -63,7 +63,8 @@ function resetInputs() {
 
 //Create an element for each book in the library array and displays
 const populateLibrary = () => {
-
+ 
+//Drops all previous Books from the display so that current display is up-to-date
     let child = libraryDisplay.lastElementChild;
     while (child) {
         libraryDisplay.removeChild(child);
