@@ -19,7 +19,7 @@ class Book {
     }
 };
 
-//Creates method to toggle book as read. NOT WORKING YET
+//Creates method to toggle book as read.
 Book.prototype.toggleRead = function(){
     if (this.read) {
         this.read = false
@@ -31,7 +31,6 @@ Book.prototype.toggleRead = function(){
 };
 
 //Adds book to the library array
-//Need to add validation so that a repeat title is not possible.
 function addBook(titleInput, authorInput, pagesInput) {
     if (myLibrary.some(book => book['title'] === titleInput)) {
         alert(`Sorry, ${titleInput} is already in your library. Enter another book.`);
@@ -99,7 +98,6 @@ const populateLibrary = () => {
             e.preventDefault();
             book.toggleRead();
             book.read ? readStatus.textContent = 'READ' : readStatus.textContent = 'NOT READ'
-
         })
     })
 };
