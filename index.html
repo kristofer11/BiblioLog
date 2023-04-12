@@ -24,9 +24,9 @@
         <div class="newBookForm modal-body">
             <form>
                 <div class="form-group">
-                    <input class="form-group-input" id="titleInput" type="text" name="title" placeholder="Title">
-                    <input class="form-group-input" id="authorInput" type="text" name="title" placeholder="author">
-                    <input class="form-group-input" id="pagesInput" type="number" min="1" value="10">
+                    <input class="form-group-input" id="titleInput" type="text" name="title" placeholder="Title" required minlength="5">
+                    <input class="form-group-input" id="authorInput" type="text" name="title" placeholder="author" required minlength="5">
+                    <input class="form-group-input" id="pagesInput" type="number" min="10" max="10000" value="150">
                 </div>
                 <!-- <div class="form-group">
                     <input type="radio" id="read" name="read" value="bookIsRead">

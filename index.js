@@ -8,6 +8,7 @@ let titleInput = document.querySelector('#titleInput');
 let authorInput = document.querySelector('#authorInput');
 let pagesInput = document.querySelector('#pagesInput');
 const submitButton = document.querySelector('#submitButton');
+const form = document.querySelector('form');
 
 //Creates new book object
 class Book {
@@ -46,8 +47,9 @@ function addBook(titleInput, authorInput, pagesInput) {
 }
 
 //Event listeners
-submitButton.addEventListener('click', (e) => e.preventDefault());
-submitButton.addEventListener('click', () => {
+// submitButton.addEventListener('click', (e) => e.preventDefault());
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
     addBook(titleInput.value, authorInput.value, pagesInput.value);
     resetInputs();
     closeModal(modal);
