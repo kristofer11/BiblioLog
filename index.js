@@ -23,7 +23,7 @@ class Book {
 //Creates method to toggle book as read.
 Book.prototype.toggleRead = function(){
     if (this.read) {
-        this.read = false
+        this.read = false;
         console.log(`${this.title} has not been read`)
     } else {
         this.read = true;  
@@ -99,8 +99,16 @@ const populateLibrary = () => {
         readBtn.addEventListener('click', (e) => {
             e.preventDefault();
             book.toggleRead();
-            book.read ? readStatus.textContent = 'READ' : readStatus.textContent = 'NOT READ'
-        })
+            if (book.read) {
+                readStatus.textContent = 'READ';
+                readStatus.style.color = 'green';
+                readBtn.textContent = 'Mark as "unread"';
+            } else {
+                readStatus.textContent = 'NOT READ';
+                readStatus.style.color = 'red';
+                readBtn.textContent = 'Mark as "read"';
+            }
+        });
     })
 };
 
