@@ -14,7 +14,7 @@
     font-size: 1.4rem;
     margin-bottom: 1rem;
     color:rgb(215, 222, 165);
-    background-color:blue;
+    background-color:navy;
     border-radius: 3px;
     cursor: pointer;
 }
@@ -118,6 +118,13 @@
 
 #submitButton {
     margin-top: 2rem;
+    border: 2px solid navy;
+    border-radius: 5px;
+}
+
+#submitButton:hover {
+    transform: scale(1.15);
+    cursor: pointer;
 }
 
 #overlay {
@@ -145,6 +152,6 @@
 
 #openModalButton:hover {
     transform: scale(1.15);
-    background-color: aquamarine;
-    border: 2px solid red;
+    background-color: orange;
+    border: 2px solid navy;
 }
