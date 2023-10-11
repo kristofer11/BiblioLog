@@ -47,36 +47,40 @@ const LoginForm = () => {
         });
     };
 
+    const loginError = useSelector((state) => state.user.error);
+
     return (
-        <Form
-            // onSubmit={submitLogin} 
-            onSubmit={handleLogin}
-        >
-            {/* {serverErrors && <p className="error-message text-danger">{serverErrors}</p>} */}
-            <Form.Group className='formGroup'>
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                    type="text"
-                    name="email"
-                    placeholder="Enter email"
-                    value={formData.email}
-                    onChange={handleChange}
-                // isInvalid={!!formErrors.email}
-                />
-            </Form.Group>
-            <Form.Group className='formGroup'>
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                    type="password"
-                    name="password"
-                    placeholder="Enter password"
-                    value={formData.password}
-                    onChange={handleChange}
-                // isInvalid={!!formErrors.password}
-                />
-            </Form.Group>
-            <Button variant="primary" type="submit" className='formSubmitBtn'>Submit</Button>
-        </Form>
+        <>
+            {loginError && <p style={{ color: 'red' }}>{loginError}</p>}
+            <Form
+                onSubmit={handleLogin}
+            >
+                {/* {serverErrors && <p className="error-message text-danger">{serverErrors}</p>} */}
+                <Form.Group className='formGroup'>
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="email"
+                        placeholder="Enter email"
+                        value={formData.email}
+                        onChange={handleChange}
+                    // isInvalid={!!formErrors.email}
+                    />
+                </Form.Group>
+                <Form.Group className='formGroup'>
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                        type="password"
+                        name="password"
+                        placeholder="Enter password"
+                        value={formData.password}
+                        onChange={handleChange}
+                    // isInvalid={!!formErrors.password}
+                    />
+                </Form.Group>
+                <Button variant="primary" type="submit" className='formSubmitBtn'>Submit</Button>
+            </Form>
+        </>
     )
 }
 

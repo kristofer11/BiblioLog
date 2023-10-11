@@ -1,0 +1,30 @@
+.homeLinks {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to right, #4B7673 20%, #99A9AC);
+    margin-top: 2rem;
+    padding: 2rem 3rem;
+    width: fit-content;
+    border-radius: 11px;
+    box-shadow: 0 0 6px 3px #113736;
+    background-color: #11373677;
+
+    & a{
+        text-decoration: none;
+        color: #fff;
+        font-size: 2rem;
+        width: fit-content;
+    }
+
+    & a:hover {
+        color: #000;
+        background-color: #fff;
+        border-radius: 11px;
+    }
+}
+
+.welcomeMsg {
+    color: #0A201E;
+    padding-left: 1rem;
+    margin-top: 2rem;
+}

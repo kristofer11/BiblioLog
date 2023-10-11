@@ -1,14 +1,9 @@
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faBook } from '@fortawesome/free-solid-svg-icons';
-// import { Link } from 'react-router-dom';
 import { logout } from '../redux/features/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Nav, Navbar } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const loggedIn = useSelector((state) => state.user.isLoggedIn);
 
     const handleLogout = () => {
@@ -28,7 +23,7 @@ const Header = () => {
                     <Nav.Link href="/my-library ">My Library</Nav.Link>
                     {!loggedIn && <Nav.Link href="/register">Register</Nav.Link>}
                     {!loggedIn && <Nav.Link href="/login">Login</Nav.Link>}
-                    <Nav.Link onClick={(e) => {
+                    {loggedIn && <Nav.Link onClick={(e) => {
                         e.preventDefault();
                         handleLogout();
                         // navigate('/login')
@@ -39,6 +34,7 @@ const Header = () => {
                     >
                         Logout
                     </Nav.Link>
+                    }
                 </Nav>
             </Navbar.Collapse>
 

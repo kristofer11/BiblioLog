@@ -94,7 +94,7 @@ function BookSearch({ setFormData, clearForm, handleClose, show, setShow, formDa
                 <form onSubmit={handleSubmit}>
                     <h3>{selectedBook.volumeInfo.title}</h3>
                     <p>{selectedBook.volumeInfo.authors.join(', ')}</p>
-                    <img src={selectedBook.volumeInfo.imageLinks.thumbnail} alt={selectedBook.volumeInfo.title} width='111' />
+                    <img src={selectedBook.volumeInfo.imageLinks.thumbnail} alt={selectedBook.volumeInfo.title} width='99'/>
                     <label>
                         Rating:
                         <output htmlFor="rating" style={{ marginLeft: '0.5rem', fontSize: '2rem', color: 'green' }}>{rating}</output>
