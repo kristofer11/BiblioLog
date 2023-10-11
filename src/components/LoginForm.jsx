@@ -27,65 +27,6 @@ const LoginForm = () => {
         navigate('/my-library')
     }
 
-    //     const [formErrors, setFormErrors] = useState({
-    //         email: '',
-    //         password: ''
-    //     });
-
-    //     const submitLogin = async (event) => {
-    //         event.preventDefault();
-
-    //         let hasErrors = false;
-    //         const errors = {};
-
-    //         if (!formData.email) {
-    //             hasErrors = true;
-    //             errors.email = 'Email is required.';
-    //         }
-
-    //         if (!formData.password) {
-    //             hasErrors = true;
-    //             errors.password = 'Password is required.';
-    //         }
-
-    //         if (hasErrors) {
-    //             setFormErrors(errors);
-    //             return;
-    //         }
-
-    //         try {
-    //             const response = await fetch(`${apiUrl}/api/users/login`, {
-    //                 method: 'POST',
-    //                 headers: {
-    //                     'Content-Type': 'application/json'
-    //                 },
-    //                 body: JSON.stringify(formData)
-    //             });
-
-    //             if (response.ok) {
-    //                 // Handle successful response
-    //                 const data = await response.json();
-    //                 const token = data.token;
-    //                 const id = data._id;
-    //                 localStorage.setItem('token', token);
-    //                 localStorage.setItem('id', id)
-    //                 console.log('User logged in successfully', data);
-
-
-    //                 // router.push('/my-library')
-
-    //             } else {
-    //                 // Handle error response
-    //                 const errorData = await response.json();
-    //                 setServerErrors(errorData.message)
-    //                 console.error('Failed to update user:', errorData);
-    //             }
-    //         } catch (error) {
-    //             // Handle network error
-    //             console.error('Network error:', error);
-    //         }
-    //     };
-
     const handleChange = (event) => {
         const { name, value } = event.target;
         let error = '';

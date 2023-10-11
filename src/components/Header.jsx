@@ -25,9 +25,9 @@ const Header = () => {
             <Navbar.Collapse id='responsive-navbar-nav' >
                 <Nav>
                     {/* <Nav.Link href="/">Home</Nav.Link> */}
-                    {!loggedIn && <Nav.Link href="/login">Login</Nav.Link>}
-                    {!loggedIn && <Nav.Link href="/register">Register</Nav.Link>}
                     <Nav.Link href="/my-library ">My Library</Nav.Link>
+                    {!loggedIn && <Nav.Link href="/register">Register</Nav.Link>}
+                    {!loggedIn && <Nav.Link href="/login">Login</Nav.Link>}
                     <Nav.Link onClick={(e) => {
                         e.preventDefault();
                         handleLogout();
