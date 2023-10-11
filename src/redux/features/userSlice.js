@@ -34,6 +34,29 @@ export const logout = createAsyncThunk('user/logout', async () => {
     window.location.href='/'
 });
 
+export const register = createAsyncThunk('user/register', async ({ name, email, password }) => {
+    const response = await fetch(`https://library-api-1iik.onrender.com/api/users`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, password }),
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+    }
+
+    const data = await response.json();
+    const token = data.token;
+    const id = data._id;
+    localStorage.setItem('token', token);
+    localStorage.setItem('id', id)
+    return data;
+
+});
+
 const initialState = {
     userName: null,
     id: null,
@@ -117,7 +140,26 @@ const userSlice = createSlice({
                 state.userName = null;
                 state.id = null;
                 state.isAuthenticated = false;
-            });
+            })
+            .addCase(register.pending, (state) => {
+                state.isLoading = true;
+                state.error = null;
+            })
+            .addCase(register.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.error = null;
+                state.userName = action.payload.name;
+                state.id = action.payload._id;
+                state.isLoggedIn = true;
+                state.isAuthenticated = true;
+            })
+            .addCase(register.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.error.message;
+                state.userName = null;
+                state.id = null;
+                state.isAuthenticated = false;
+            })
     },
 });
 

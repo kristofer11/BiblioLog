@@ -29,8 +29,9 @@ const BookList = () => {
         //         />
         //     }) : <p>Error, no books to load...</p>}
         // </div>
+        
         <div>
-        {library.map((book) => (
+        {library ? library.map((book) => (
             <BookItem
                 key={book._id}
                 img={book.img}
@@ -40,7 +41,7 @@ const BookList = () => {
                 review={book.review}
                 bookId={book._id}
             />
-        ))}
+        )) : <p>Error, no books to load...</p>}
     </div>
     )
 }

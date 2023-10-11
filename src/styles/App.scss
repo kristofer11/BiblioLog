@@ -7,3 +7,129 @@
  html, body {
     box-sizing: border-box;
  }
+
+ * {
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+    padding: 0;
+}
+
+.container {
+    min-height: calc(100vh - 2.5rem);
+    padding-bottom: 2.5rem;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(../images/mainbg-wide.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-width: unset !important;
+}
+
+.navbar {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    text-decoration: none;
+    background-color: #102324;
+    width: 100%;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    filter: invert(100%)
+  }
+
+.navbar-brand {
+    text-decoration: none;
+}
+
+.navbar-brand h1 {
+    color: #CACED4;
+    padding-left: 1rem;
+}
+
+.navbar-nav {
+    display: flex;
+    gap: 1rem;
+}
+
+.navbar-nav a {
+    text-decoration: none;
+    color: #CACED4;
+    opacity: 0.98;
+}
+
+.navbar-nav a:hover {
+    color: #000;
+    background-color: #fff;
+    border-radius: 11px;
+}
+
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+    background-color: #102324;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 2rem;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    gap: .6rem;
+    max-width: 400px;
+    border-radius: 11px;
+    box-shadow: 0 0 6px 3px #113736;
+    padding: 1rem;
+    background-color: #11373699;
+    backdrop-filter: blur(6px);
+}
+
+label {
+    width: 188px;
+}
+
+input {
+    font-size: 1.5rem;
+}
+
+.formSubmitBtn {
+    flex-grow: 0;
+    width: 150px;
+    height: 33px;
+    margin: 0 auto
+}
+
+.formGroup {
+    display: flex;
+    gap: 1rem;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-nav {
+        margin-left: 1rem;
+    }
+    .container {
+        background-image: url(../images/mainbg-tall.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}
