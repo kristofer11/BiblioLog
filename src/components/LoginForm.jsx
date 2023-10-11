@@ -1,74 +1,90 @@
 import { Form, Button } from 'react-bootstrap';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, setUser } from '../redux/features/userSlice';
+import { useNavigate } from 'react-router-dom';
+// import useLogin from '../utils/Login';
+
 
 const LoginForm = () => {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 
-    'https://library-api-1iik.onrender.com';
-
-    const [serverErrors, setServerErrors] = useState('');
+    // const { handleLogin } = useLogin();
 
     const [formData, setFormData] = useState({
         email: '',
         password: ''
     });
 
-    const [formErrors, setFormErrors] = useState({
-        email: '',
-        password: ''
-    });
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const userName = useSelector((state) => state.user.userName);
 
-    const submitLogin = async (event) => {
-        event.preventDefault();
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        const email = formData.email;
+        const password = formData.password;
 
-        let hasErrors = false;
-        const errors = {};
+        dispatch(login({ email, password }))
+        navigate('/my-library')
+    }
 
-        if (!formData.email) {
-            hasErrors = true;
-            errors.email = 'Email is required.';
-        }
+    //     const [formErrors, setFormErrors] = useState({
+    //         email: '',
+    //         password: ''
+    //     });
 
-        if (!formData.password) {
-            hasErrors = true;
-            errors.password = 'Password is required.';
-        }
+    //     const submitLogin = async (event) => {
+    //         event.preventDefault();
 
-        if (hasErrors) {
-            setFormErrors(errors);
-            return;
-        }
+    //         let hasErrors = false;
+    //         const errors = {};
 
-        try {
-            const response = await fetch(`${apiUrl}/api/users/login`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
+    //         if (!formData.email) {
+    //             hasErrors = true;
+    //             errors.email = 'Email is required.';
+    //         }
 
-            if (response.ok) {
-                // Handle successful response
-                const data = await response.json();
-                const token = data.token;
-                const id = data._id;
-                localStorage.setItem('token', token);
-                localStorage.setItem('id', id)
-                console.log('User logged in successfully', data);
+    //         if (!formData.password) {
+    //             hasErrors = true;
+    //             errors.password = 'Password is required.';
+    //         }
+
+    //         if (hasErrors) {
+    //             setFormErrors(errors);
+    //             return;
+    //         }
+
+    //         try {
+    //             const response = await fetch(`${apiUrl}/api/users/login`, {
+    //                 method: 'POST',
+    //                 headers: {
+    //                     'Content-Type': 'application/json'
+    //                 },
+    //                 body: JSON.stringify(formData)
+    //             });
+
+    //             if (response.ok) {
+    //                 // Handle successful response
+    //                 const data = await response.json();
+    //                 const token = data.token;
+    //                 const id = data._id;
+    //                 localStorage.setItem('token', token);
+    //                 localStorage.setItem('id', id)
+    //                 console.log('User logged in successfully', data);
 
 
-                // router.push('/my-library')
+    //                 // router.push('/my-library')
 
-            } else {
-                // Handle error response
-                const errorData = await response.json();
-                setServerErrors(errorData.message)
-                console.error('Failed to update user:', errorData);
-            }
-        } catch (error) {
-            // Handle network error
-            console.error('Network error:', error);
-        }
-    };
+    //             } else {
+    //                 // Handle error response
+    //                 const errorData = await response.json();
+    //                 setServerErrors(errorData.message)
+    //                 console.error('Failed to update user:', errorData);
+    //             }
+    //         } catch (error) {
+    //             // Handle network error
+    //             console.error('Network error:', error);
+    //         }
+    //     };
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -91,8 +107,11 @@ const LoginForm = () => {
     };
 
     return (
-        <Form onSubmit={submitLogin} >
-            {serverErrors && <p className="error-message text-danger">{serverErrors}</p>}
+        <Form
+            // onSubmit={submitLogin} 
+            onSubmit={handleLogin}
+        >
+            {/* {serverErrors && <p className="error-message text-danger">{serverErrors}</p>} */}
             <Form.Group className='formGroup'>
                 <Form.Label>Email</Form.Label>
                 <Form.Control
@@ -101,7 +120,7 @@ const LoginForm = () => {
                     placeholder="Enter email"
                     value={formData.email}
                     onChange={handleChange}
-                    isInvalid={!!formErrors.email}
+                // isInvalid={!!formErrors.email}
                 />
             </Form.Group>
             <Form.Group className='formGroup'>
@@ -112,7 +131,7 @@ const LoginForm = () => {
                     placeholder="Enter password"
                     value={formData.password}
                     onChange={handleChange}
-                    isInvalid={!!formErrors.password}
+                // isInvalid={!!formErrors.password}
                 />
             </Form.Group>
             <Button variant="primary" type="submit" className='formSubmitBtn'>Submit</Button>
