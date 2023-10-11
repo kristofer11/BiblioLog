@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 // import { clearLibrary } from './librarySlice';
 
 export const login = createAsyncThunk('user/login', async ({ email, password }) => {
@@ -15,7 +17,7 @@ export const login = createAsyncThunk('user/login', async ({ email, password }) 
     if (!response.ok) {
         const errorData = await response.json();
         console.log('FAILED!')
-        throw new Error(errorData.message);
+        throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorData.message}`);
     }
 
     const data = await response.json();
@@ -31,7 +33,7 @@ export const login = createAsyncThunk('user/login', async ({ email, password }) 
 
 export const logout = createAsyncThunk('user/logout', async () => {
     localStorage.removeItem('token');
-    window.location.href='/'
+    localStorage.removeItem('id');
 });
 
 export const register = createAsyncThunk('user/register', async ({ name, email, password }) => {
@@ -125,6 +127,7 @@ const userSlice = createSlice({
             .addCase(logout.pending, (state) => {
                 state.isLoading = true;
                 state.error = null;
+                state.isLoggedIn = false;
             })
             .addCase(logout.fulfilled, (state, action) => {
                 state.isLoading = false;
@@ -139,6 +142,7 @@ const userSlice = createSlice({
                 state.error = action.error.message;
                 state.userName = null;
                 state.id = null;
+                state.isLoggedIn = false;
                 state.isAuthenticated = false;
             })
             .addCase(register.pending, (state) => {

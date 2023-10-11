@@ -28,9 +28,10 @@ const Header = () => {
                     {!loggedIn && <Nav.Link href="/login">Login</Nav.Link>}
                     {!loggedIn && <Nav.Link href="/register">Register</Nav.Link>}
                     <Nav.Link href="/my-library ">My Library</Nav.Link>
-                    <Nav.Link onClick={() => {
+                    <Nav.Link onClick={(e) => {
+                        e.preventDefault();
                         handleLogout();
-                        navigate('/login')
+                        // navigate('/login')
                     }
 
                     }

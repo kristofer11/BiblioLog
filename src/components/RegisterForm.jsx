@@ -1,58 +1,28 @@
 import { Form, Button } from 'react-bootstrap';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../redux/features/userSlice';
 
 const RegisterForm = () => {
     const router = useNavigate();
     const dispatch = useDispatch();
 
+    const registerError = useSelector((state) => state.user.error);
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        password: ''
+        password: '',
+        confirmPassword: ''
     });
 
     const handleRegister = (e) => {
         e.preventDefault();
         console.log('Registering user:', formData);
-        dispatch(register(formData));
-        router('/my-library');
+        dispatch(register(formData))
+
     }
-
-    // const submitRegister = async (event) => {
-    //     event.preventDefault();
-
-    //     try {
-    //         const response = await fetch(`${apiUrl}/api/users/`, {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify(formData)
-    //         });
-
-    //         if (response.ok) {
-    //             // Handle successful response
-    //             const data = await response.json();
-    //             const token = data.token;
-    //             const id = data._id;
-    //             localStorage.setItem('token', token);
-    //             localStorage.setItem('id', id)
-    //             console.log('User registered and logged in successfully', data);
-
-    //             router.push('/my-library');
-    //         } else {
-    //             // Handle error response
-    //             const errorData = await response.json();
-    //             console.error('Failed to update user:', errorData);
-    //         }
-    //     }
-    //     catch (error) {
-    //         console.error('Error', error)
-    //     }
-    // }
 
     const handleChange = (event) => {
         setFormData({
@@ -61,10 +31,18 @@ const RegisterForm = () => {
         })
     }
 
+    const isPasswordMatched = () => {
+        return formData.password === formData.confirmPassword;
+    }
+
     return (
         <div>
+            {registerError && <p style={{ color: 'red' }}>{registerError}</p>}
+
             <Form
-                onSubmit={handleRegister}
+                onSubmit={(e) => {
+                    handleRegister(e)
+                }}
             >
                 <Form.Group className='formGroup'>
                     <Form.Label>Name</Form.Label>
@@ -74,13 +52,14 @@ const RegisterForm = () => {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
+                        minLength={4}
                     />
                 </Form.Group>
 
                 <Form.Group className='formGroup'>
                     <Form.Label>Email</Form.Label>
                     <Form.Control
-                        type="text"
+                        type="email"
                         placeholder="Enter email"
                         name="email"
                         value={formData.email}
@@ -93,11 +72,28 @@ const RegisterForm = () => {
                         type="password"
                         placeholder="Enter password"
                         name="password"
+                        minLength={4}
                         value={formData.password}
                         onChange={handleChange}
                     />
                 </Form.Group>
-                <Button variant="primary" type="submit" className='formSubmitBtn' >Submit</Button>
+                {/* confirm password */}
+                <Form.Group className='formGroup'>
+                    <Form.Label>Confirm</Form.Label>
+                    <Form.Control
+                        type="password"
+                        placeholder="Confirm password"
+                        name="confirmPassword"
+                        minLength={4}
+                        value={formData.confirmPassword}
+                        onChange={handleChange}
+                        isInvalid={!isPasswordMatched()}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                        Passwords do not match.
+                    </Form.Control.Feedback>
+                </Form.Group>
+                <Button variant="primary" type="submit" className='formSubmitBtn' disabled={!isPasswordMatched()}>Submit</Button>
             </Form>
         </div>
     )

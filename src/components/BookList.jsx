@@ -8,30 +8,17 @@ const BookList = () => {
     const dispatch = useDispatch()
     console.log('book list engage')
 
-    useEffect(() => {
-        dispatch(getLibrary())
-    }, [dispatch])
-
     const library = useSelector((state) => state.library.books)
 
+    useEffect(() => {
+        if (!library.length){        
+            dispatch(getLibrary())
+        }
+    }, [dispatch, library])
 
     return (
-        // <div>
-        //     {userId ? library.map((book) => {
-        //         <BookItem
-        //             key={book._id}
-        //             img={book.img}
-        //             author={book.author}
-        //             title={book.title}
-        //             rating={book.rating}
-        //             review={book.review}
-        //             bookId={book._id}
-        //         />
-        //     }) : <p>Error, no books to load...</p>}
-        // </div>
-        
         <div>
-        {library ? library.map((book) => (
+        {library[0] ? library.map((book) => (
             <BookItem
                 key={book._id}
                 img={book.img}
