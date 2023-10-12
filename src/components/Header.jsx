@@ -14,7 +14,7 @@ const Header = () => {
 
         <Navbar expand='md' className='navbar-light' >
             <Navbar.Brand href="/">
-                <h1>My Library</h1>
+                <h1>BookLog</h1>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls='responsive-navbar-nav' className='custom-toggler' />
             <Navbar.Collapse id='responsive-navbar-nav' >

@@ -3,7 +3,7 @@ const BookItem = ({ title, author, rating, review, bookId, img }) => {
     return (
         <details className='bookItem'>
             <summary>
-                <img src={img} alt={`Cover of the book ${title} by ${author}.`} style={{maxWidth: '111px'}} />
+                <img src={img} alt={`Cover of the book ${title} by ${author}.`} />
             </summary>
             <h3>Title: {title}</h3>
             <h4>Author: {author ? author : 'no author'}</h4>

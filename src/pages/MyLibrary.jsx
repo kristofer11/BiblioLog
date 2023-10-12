@@ -6,12 +6,15 @@ import LoginForm from '../components/LoginForm'
 import { getLibrary } from '../redux/features/librarySlice.js'
 import BookList from '../components/BookList'
 import BookSearch from '../components/BookSearch'
+import { useNavigate } from 'react-router-dom'
+import '../styles/myLibrary.scss'
 
 const MyLibrary = () => {
     const userName = useSelector((state) => state.user.userName);
     const dispatch = useDispatch();
     const library = useSelector((state) => state.library.books)
     const token = localStorage.getItem('token')
+    const navigate = useNavigate();
 
     // MODAL STATE VARIABLES
     const [show, setShow] = useState(false);
@@ -29,11 +32,15 @@ const MyLibrary = () => {
     if (!token) {
         return (
             <>
-                <p>Please Login to view your library.</p>
+                <p style={{color: 'red'}}>Please Login to view your library.</p>
                 <LoginForm />
             </>
         )
     }
+
+    // if (!token) {
+    //     navigate('/login')
+    // }
 
     return (
         <div>
