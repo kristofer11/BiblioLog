@@ -23,6 +23,28 @@ export const getLibrary = createAsyncThunk('library/getLibrary', async () => {
     return data;
 })
 
+export const deleteBook = createAsyncThunk('library/deleteBook', async ({ bookId }) => {
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('id');
+
+    const response = await fetch(`https://library-api-1iik.onrender.com/api/library/${userId}/books/${bookId}`, {
+        method: 'DELETE',
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+    }
+
+    const data = await response.json();
+    const books = data.books;
+    // const id = data._id;
+
+    return data;
+});
+
 //add book to library
 export const addBook = createAsyncThunk('library/addBook', async ({ title, author, img, rating, review }) => {
     const token = localStorage.getItem('token');
@@ -107,6 +129,24 @@ const librarySlice = createSlice({
                 state.isAuthenticated = true;
             })
             .addCase(addBook.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.error.message;
+                state.books = null;
+                state.id = null;
+                state.isAuthenticated = false;
+            })
+            .addCase(deleteBook.pending, (state, action) => {
+                state.isLoading = true;
+                state.error = null;
+            })
+            .addCase(deleteBook.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.error = null;
+                state.books = action.payload;
+                state.id = action.payload._id;
+                state.isAuthenticated = true;
+            })
+            .addCase(deleteBook.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.error.message;
                 state.books = null;

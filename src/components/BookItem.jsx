@@ -1,5 +1,14 @@
+import { deleteBook, getLibrary } from '../redux/features/librarySlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 const BookItem = ({ title, author, rating, review, bookId, img }) => {
+    const dispatch = useDispatch()
+
+    const handleDelete = () => {
+        dispatch(deleteBook({bookId: bookId}))
+        dispatch(getLibrary())
+    }
+
     return (
         <details className='bookItem'>
             <summary>
@@ -10,10 +19,7 @@ const BookItem = ({ title, author, rating, review, bookId, img }) => {
             <p>Your Rating: {rating ? rating : 'no rating'}</p>
             <p>Review: {review ? review : '(no review available)'}</p>
             <button className='delete-btn btn btn-danger'
-                // onClick={() => {
-                //     deleteBook(bookId, id)
-                //     fetchLibraryData()
-                // }}
+                onClick={handleDelete}
             >
                 Delete
             </button>
