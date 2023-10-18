@@ -7,9 +7,6 @@ import Home from './pages/Home';
 import MyLibrary from './pages/MyLibrary';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import { useDispatch, useSelector } from 'react-redux';
-import { setUser, clearUser } from './redux/features/userSlice';
-import { getLibrary } from './redux/features/librarySlice';
 
 function App() {
 

@@ -14,7 +14,6 @@ const MyLibrary = () => {
     const dispatch = useDispatch();
     const library = useSelector((state) => state.library.books)
     const token = localStorage.getItem('token')
-    const navigate = useNavigate();
 
     // MODAL STATE VARIABLES
     const [show, setShow] = useState(false);
@@ -26,8 +25,6 @@ const MyLibrary = () => {
         rating: '',
         review: ''
     });
-
-    console.log(library, 'bullshit')
 
     if (!token) {
         return (

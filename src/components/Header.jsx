@@ -1,10 +1,15 @@
 import { logout } from '../redux/features/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Nav, Navbar } from 'react-bootstrap';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     const dispatch = useDispatch();
     const loggedIn = useSelector((state) => state.user.isLoggedIn);
+    const token = localStorage.getItem('token')
+    const navigate = useNavigate();
 
     const handleLogout = () => {
         dispatch(logout());
@@ -13,14 +18,16 @@ const Header = () => {
     return (
 
         <Navbar expand='md' className='navbar-light' >
-            <Navbar.Brand href="/">
-                <h1>BookLog</h1>
+            <Navbar.Brand>
+                <Link to="/my-library">
+                    <h1>BookLog</h1>   
+                </Link>                 
             </Navbar.Brand>
             <Navbar.Toggle aria-controls='responsive-navbar-nav' className='custom-toggler' />
             <Navbar.Collapse id='responsive-navbar-nav' >
                 <Nav>
                     {/* <Nav.Link href="/">Home</Nav.Link> */}
-                    <Nav.Link href="/my-library ">My Library</Nav.Link>
+                    <Nav.Link to="/my-library ">My Library</Nav.Link>
                     {!loggedIn && <Nav.Link href="/register">Register</Nav.Link>}
                     {!loggedIn && <Nav.Link href="/login">Login</Nav.Link>}
                     {loggedIn && <Nav.Link onClick={(e) => {

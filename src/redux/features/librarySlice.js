@@ -16,7 +16,6 @@ export const getLibrary = createAsyncThunk('library/getLibrary', async () => {
     }
 
     const data = await response.json();
-    console.log(data, 'yoyo!')
     const books = data.books;
     const id = data._id;
 
