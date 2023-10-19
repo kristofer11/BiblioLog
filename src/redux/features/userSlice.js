@@ -127,7 +127,7 @@ const userSlice = createSlice({
             .addCase(login.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.error = null;
-                state.userName = action.payload.name;
+                state.userName = action.payload.userName;
                 state.id = action.payload._id;
                 state.isLoggedIn = true;
                 state.isAuthenticated = true;
@@ -183,7 +183,7 @@ const userSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(checkToken.fulfilled, (state, action) => {
-                state.userName = action.payload.name;
+                state.userName = action.payload.userName;
                 state.id = action.payload._id;
                 state.isLoggedIn = true;
                 state.isAuthenticated = true;
