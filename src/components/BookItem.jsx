@@ -1,29 +1,66 @@
 import { deleteBook, getLibrary } from '../redux/features/librarySlice'
 import { useDispatch, useSelector } from 'react-redux'
+import BookModal from '../components/BookModal'
+import { useState } from 'react'
+import { Modal } from 'react-bootstrap'
 
 const BookItem = ({ title, author, rating, review, bookId, img }) => {
     const dispatch = useDispatch()
 
+    // VIEW BOOK MODAL STATE VARIABLES
+    const [showBook, setShowBook] = useState(false);
+    const handleBookClose = () => setShowBook(false);
+    const handleBookShow = () => {
+        setShowBook(true)
+        console.log('handleBookShow')
+        console.log(showBook)
+    };
+
     const handleDelete = () => {
-        dispatch(deleteBook({bookId: bookId}))
+        dispatch(deleteBook({ bookId: bookId }))
         dispatch(getLibrary())
     }
 
     return (
-        <details className='bookItem'>
-            <summary>
-                <img src={img} alt={`Cover of the book ${title} by ${author}.`} />
-            </summary>
-            <h3>Title: {title}</h3>
-            <h4>Author: {author ? author : 'no author'}</h4>
-            <p>Your Rating: {rating ? rating : 'no rating'}</p>
-            <p>Review: {review ? review : '(no review available)'}</p>
-            <button className='delete-btn btn btn-danger'
-                onClick={handleDelete}
+        <>
+            <div
+                className='bookItem'
+                onClick={() => handleBookShow()}
             >
-                Delete
-            </button>
-        </details>
+                <img src={img} alt={`Cover of the book ${title} by ${author}.`} />
+                <h3>{title}</h3>
+            </div>
+            {/* <BookModal
+                // show={showBook}
+                title={title}
+                author={author}
+                rating={rating}
+                review={review}
+                img={img}
+                onHide={handleBookClose}
+            /> */}
+            <Modal
+                onHide={handleBookClose}
+                className="viewBookModal"
+                show={showBook}
+            >
+                <Modal.Header closeButton >
+                    <Modal.Title>{title}</Modal.Title>
+                    <Modal.Body>
+                        <img src={img} ></img>
+                        <p>Author: {author}</p>
+                        <p>Rating: {rating}</p>
+                        <p>Review: {review}</p>
+                        <button className='delete-btn btn btn-danger'
+                            onClick={handleDelete}
+                        >
+                            Delete
+                        </button>
+                    </Modal.Body>
+                </Modal.Header>
+            </Modal>
+        </>
+
     )
 }
 

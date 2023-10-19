@@ -16,7 +16,7 @@ const BookList = () => {
     }, [dispatch, library])
 
     return (
-        <div>
+        <div className='book-list'>
             {library && library.length > 0 ? library.map((book) => (
                 <BookItem
                     key={book._id}

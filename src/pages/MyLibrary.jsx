@@ -15,10 +15,11 @@ const MyLibrary = () => {
     const library = useSelector((state) => state.library.books)
     const token = localStorage.getItem('token')
 
-    // MODAL STATE VARIABLES
+    // ADD BOOK MODAL STATE VARIABLES
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
     const [formData, setFormData] = useState({
         title: '',
         author: '',
@@ -29,7 +30,7 @@ const MyLibrary = () => {
     if (!token) {
         return (
             <>
-                <p style={{color: 'red'}}>Please Login to view your library.</p>
+                <p style={{ color: 'red' }}>Please Login to view your library.</p>
                 <LoginForm />
             </>
         )
@@ -40,30 +41,30 @@ const MyLibrary = () => {
     // }
 
     return (
-        <div>
+        <div className='library-container'>
             <h1>MyLibrary</h1>
             <h1 style={{ color: 'pink' }}>{userName}</h1>
             <Button
-                    className='newBookBtn'
-                    onClick={handleShow}
-                >
-                    Add New Book
-                </Button>
+                className='newBookBtn'
+                onClick={handleShow}
+            >
+                Add New Book
+            </Button>
             <BookList />
             <Modal show={show} onHide={handleClose} className='newBookModal'>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Add Book</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <BookSearch
-                            setFormData={setFormData}
-                            handleClose={handleClose}
-                        />
-                    </Modal.Body>
+                <Modal.Header closeButton>
+                    <Modal.Title>Add Book</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <BookSearch
+                        setFormData={setFormData}
+                        handleClose={handleClose}
+                    />
+                </Modal.Body>
+            </Modal>
 
-                </Modal>
-        </div>            
-        )
+        </div>
+    )
 }
 
 export default MyLibrary

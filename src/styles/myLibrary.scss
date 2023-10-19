@@ -1,8 +1,30 @@
+.library-container{
+    width: 999px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .newBookBtn{
+        width: 133px;
+        margin-inline: auto;
+    }
+}
+
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .bookItem {
     padding-top: 1rem;
-    summary{
-        img{
-            width: 100%;
-        }
+    border: 1px solid green;
+    width: 288px;
+    background-color: orange;
+    margin: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+
+    &:hover{
+        cursor: pointer;
     }
 }
