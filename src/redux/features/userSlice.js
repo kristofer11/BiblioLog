@@ -63,16 +63,17 @@ export const register = createAsyncThunk('user/register', async ({ name, email, 
 export const checkToken = createAsyncThunk('user/checkToken', async () => {
     const token = localStorage.getItem('token');
     if (token) {
-      // Return the user object based on the token
-      const response = await fetch(`https://library-api-1iik.onrender.com/api/users/me`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const data = await response.json();
-      return data;
+        // Return the user object based on the token
+        const response = await fetch(`https://library-api-1iik.onrender.com/api/users/me`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        const data = await response.json();
+        console.log(data)
+        return data;
     }
-  });
+});
 
 const initialState = {
     userName: null,
@@ -184,15 +185,18 @@ const userSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(checkToken.fulfilled, (state, action) => {
-                state.userName = action.payload.name;
-                state.id = action.payload._id;
-                state.isLoggedIn = true;
-                state.isAuthenticated = true;
-              })
+                if (action.payload) {
+                    state.userName = action.payload.name;
+                    state.id = action.payload._id;
+                    state.isLoggedIn = true;
+                    state.isAuthenticated = true;
+                }
+
+            })
             .addCase(checkToken.rejected, (state, action) => {
                 state.isAuthenticated = false;
                 state.isLoading = false;
-                state.error = action.error.message;
+                state.error = action.error.message || 'invalid or expired token';
                 state.isLoggedIn = false;
             });
     },
