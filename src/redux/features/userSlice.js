@@ -12,6 +12,7 @@ export const login = createAsyncThunk('user/login', async ({ email, password }) 
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
+        mode: 'cors'
     });
 
     if (!response.ok) {
