@@ -27,7 +27,7 @@ const Header = () => {
             <Navbar.Collapse id='responsive-navbar-nav' >
                 <Nav>
                     {/* <Nav.Link href="/">Home</Nav.Link> */}
-                    <Nav.Link to="/my-library ">My Library</Nav.Link>
+                    <Link to="/my-library" className='nav-link'>My Library</Link>
                     {!loggedIn && <Nav.Link href="/register">Register</Nav.Link>}
                     {!loggedIn && <Nav.Link href="/login">Login</Nav.Link>}
                     {loggedIn && <Nav.Link onClick={(e) => {

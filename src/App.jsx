@@ -7,8 +7,12 @@ import Home from './pages/Home';
 import MyLibrary from './pages/MyLibrary';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import { checkToken } from './redux/features/userSlice';
+import { useDispatch, useSelector } from 'react-redux'; 
 
 function App() {
+    const dispatch = useDispatch();
+    dispatch(checkToken());
 
     return (
         <>
