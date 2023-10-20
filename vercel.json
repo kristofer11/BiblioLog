@@ -1,0 +1,8 @@
+{
+    "routes": [
+      { "src": "/my-library", "dest": "/my-library.html" },
+      { "src": "/login", "dest": "/login.html" },
+      { "src": "/register", "dest": "/register.html" },
+      { "src": "/(.*)", "dest": "/index.html" }
+    ]
+  }
