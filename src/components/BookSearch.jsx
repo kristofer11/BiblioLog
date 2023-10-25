@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { addBook } from '../redux/features/librarySlice';
 // import submitNewBook from '../api/submitNewBook';
+import NoImage from '../assets/forest-book.png'
+import '../styles/bookSearch.scss'
 
 function BookSearch({ setFormData, clearForm, handleClose, show, setShow, formData }) {
     const [query, setQuery] = useState('');
@@ -13,16 +15,25 @@ function BookSearch({ setFormData, clearForm, handleClose, show, setShow, formDa
     const [rating, setRating] = useState(5);
     const [review, setReview] = useState('');
     const [img, setImg] = useState('');
-    const [showSearchResults, setShowSearchResults] = useState(true);
+    const [showSearchResults, setShowSearchResults] = useState(false);
     const [showSearchBar, setShowSearchBar] = useState(true);
+    const [showError, setShowError] = useState(false)
 
     const searchBooks = async () => {
         try {
             const response = await axios.get(
-                `https://www.googleapis.com/books/v1/volumes?q=${query}`
+                `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=20`
             );
-            setBooks(response.data.items);
-            setShowSearchResults(true);
+            console.log(query, response.data.items)
+            if (response.data.items) {
+                setShowError(false)
+                setBooks(response.data.items);
+                setShowSearchResults(true);
+            }
+            if (response.data.items === undefined) {
+                setShowSearchResults(false);
+                setShowError(true);
+            }
         } catch (error) {
             console.error(error);
         }
@@ -40,7 +51,7 @@ function BookSearch({ setFormData, clearForm, handleClose, show, setShow, formDa
     const handleAddToLibrary = (book) => {
         setSelectedBook(book);
         setSelectedTitle(book.volumeInfo.title);
-        setSelectedAuthor(book.volumeInfo.authors.join(', '));
+        book.volumeInfo.authors[1] ? setSelectedAuthor(book.volumeInfo.authors.join(', ')) : setSelectedAuthor(book.volumeInfo.authors[0]);
         setImg(book.volumeInfo.imageLinks.thumbnail)
         setBooks(books.filter((b) => b.id !== book.id));
         setShowSearchResults(false);
@@ -83,18 +94,18 @@ function BookSearch({ setFormData, clearForm, handleClose, show, setShow, formDa
     };
 
     return (
-        <div>
-            {showSearchBar && <form onSubmit={handleSearch}>
+        <div className='book-search-modal'>
+            {showSearchBar && <form onSubmit={handleSearch} className='search-bar'>
                 <input type="text" value={query} onChange={handleInputChange} />
-                <button type="submit">Search</button>
+                <button type="submit" className='search-btn'>Search</button>
             </form>
             }
-
+            {showError && <p>No books found, try again.</p>}
             {selectedBook && (
                 <form onSubmit={handleSubmit}>
                     <h3>{selectedBook.volumeInfo.title}</h3>
                     <p>{selectedBook.volumeInfo.authors.join(', ')}</p>
-                    <img src={selectedBook.volumeInfo.imageLinks.thumbnail} alt={selectedBook.volumeInfo.title} width='99'/>
+                    <img src={selectedBook.volumeInfo.imageLinks.thumbnail} alt={selectedBook.volumeInfo.title} width='99' />
                     <label>
                         Rating:
                         <output htmlFor="rating" style={{ marginLeft: '0.5rem', fontSize: '2rem', color: 'green' }}>{rating}</output>
@@ -108,14 +119,31 @@ function BookSearch({ setFormData, clearForm, handleClose, show, setShow, formDa
                     <button type="submit">Add to Library</button>
                 </form>
             )}
+            {showSearchResults && books.length === 0 && (
+                <p>No books found</p>
+            )}
             {showSearchResults && (
-                <ul>
+                <ul className='result-list'>
                     {books.map((book) => (
                         <li key={book.id}>
-                            <h3>{book.volumeInfo.title}</h3>
-                            <p>{book.volumeInfo.authors.join(', ')}</p>
-                            <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} />
-                            <button onClick={() => handleAddToLibrary(book)}>Add to Library</button>
+                                <img
+                                    src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : NoImage}
+                                    alt={book.volumeInfo.title}
+                                />                            
+                            <div>
+
+                                <h3>{book.volumeInfo.title}</h3>
+                            <p>
+                                {book.volumeInfo.authors ? (book.volumeInfo.authors.length > 1 ? book.volumeInfo.authors.join(', ') : book.volumeInfo.authors) : null}
+                            </p>    
+                            {/* <p>
+                                {book.volumeInfo.authors.length > 1 ? `By ${book.volumeInfo.authors.join(', ')}` : `By ${book.volumeInfo.authors}`}
+                            </p>      */}
+                            <button onClick={() => handleAddToLibrary(book)}>Add to Library</button>                                                       
+                            </div>
+
+                            <hr />
+                            <hr />
                             <hr />
                         </li>
                     ))}

@@ -42,18 +42,44 @@
         max-width: 111px;
     }
 
-    .buttons{
+    .buttons {
         display: flex;
         gap: 1rem;
     }
-    .edit-button{
+
+    .edit-button {
         width: 50px;
         border: none;
         background: #FFA500;
         border-radius: 6px;
+
         &:hover {
             cursor: pointer;
             background-color: #b37300;
+        }
+
+        .modal-review {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+    }
+
+    .edit-icon-container {
+        width: fit-content;
+        // margin-left: 1rem;
+        .edit-icon {
+            width: 22px;
+        }
+    }
+
+    .modal-edit-btn {
+        margin-left: 1rem;
+        padding: 0.25rem 0.25rem 0.5rem 0.25rem;
+        border-radius: 6px;
+        &:hover {
+            cursor: pointer;
+            background-color: grey;
         }
     }
 }

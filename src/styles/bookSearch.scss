@@ -1,0 +1,39 @@
+.book-search-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .search-bar {
+        width: 100%;
+    }
+}
+
+.search-btn {
+    background-color: orange;
+    border-radius: 11px;
+    &:hover {
+        background-color: #b37300;
+    }
+}
+
+.result-list {
+    list-style-type: none;
+    
+    li {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding-block: 1rem;
+
+        img {
+            border-radius: 11px;
+        }
+
+        button {
+            width: 133px;
+            border-radius: 6px;
+        }
+        
+    }
+
+}

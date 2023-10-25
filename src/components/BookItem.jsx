@@ -50,17 +50,25 @@ const BookItem = ({ title, author, rating, review, bookId, img }) => {
                 <Modal.Body>
                     <img src={img} ></img>
                     <p>Author: {author}</p>
-                    <p>Rating: {rating}</p>
-                    <p>Review: {review}</p>
+                    <p>
+                        Rating: {rating}
+                        <span className='modal-edit-btn' onClick={() => console.log('clicked')}>
+                            <EditIcon />
+                        </span>
+                    </p>
+                    <p>
+                        Review: {review}
+                        <span className='modal-edit-btn' onClick={() => console.log('clicked')}>
+                            <EditIcon />
+                        </span>
+                    </p>
+
                     <div className="buttons">
-                                         <button className='delete-btn btn btn-danger'
-                        onClick={handleDelete}
-                    >
-                        Delete
-                    </button>
-                    <button className='edit-button'>
-                        <EditIcon />
-                        </button>   
+                        <button className='delete-btn btn btn-danger'
+                            onClick={handleDelete}
+                        >
+                            Delete
+                        </button>
                     </div>
 
                 </Modal.Body>
