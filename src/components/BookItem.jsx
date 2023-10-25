@@ -29,7 +29,11 @@ const BookItem = ({ title, author, rating, review, bookId, img }) => {
                 onClick={() => handleBookShow()}
             >
                 <img src={img} alt={`Cover of the book ${title} by ${author}.`} />
-                <h3>{title}</h3>
+                <div>
+                    <h3>{title}</h3>
+                    <h4>By: {author}</h4>
+                </div>
+
             </div>
             {/* <BookModal
                 // show={showBook}

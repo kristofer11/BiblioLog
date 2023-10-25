@@ -13,16 +13,28 @@
 .book-list {
     display: flex;
     flex-wrap: wrap;
+    margin-left: auto;
+    max-width: 100%;
 }
 
 .bookItem {
-    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 2rem;
+    padding: 1rem;
     border: 1px solid green;
-    width: 288px;
+    width: 444px;
+    max-width: 100vw;
     background-color: orange;
     margin: 1rem;
     border-radius: 6px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+
+    img {
+        border-radius: 11px;
+        width: 77px;
+    }
 
     &:hover {
         cursor: pointer;
