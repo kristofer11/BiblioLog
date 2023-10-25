@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import BookModal from '../components/BookModal'
 import { useState } from 'react'
 import { Modal } from 'react-bootstrap'
+import EditIcon from '../assets/icons/edit'
 
 const BookItem = ({ title, author, rating, review, bookId, img }) => {
     const dispatch = useDispatch()
@@ -44,20 +45,25 @@ const BookItem = ({ title, author, rating, review, bookId, img }) => {
                 className="viewBookModal"
                 show={showBook}
             >
-                <Modal.Header closeButton >
-                    <Modal.Title>{title}</Modal.Title>
-                    <Modal.Body>
-                        <img src={img} ></img>
-                        <p>Author: {author}</p>
-                        <p>Rating: {rating}</p>
-                        <p>Review: {review}</p>
-                        <button className='delete-btn btn btn-danger'
-                            onClick={handleDelete}
-                        >
-                            Delete
-                        </button>
-                    </Modal.Body>
-                </Modal.Header>
+                <Modal.Header closeButton ></Modal.Header>
+                <Modal.Title>{title}</Modal.Title>
+                <Modal.Body>
+                    <img src={img} ></img>
+                    <p>Author: {author}</p>
+                    <p>Rating: {rating}</p>
+                    <p>Review: {review}</p>
+                    <div className="buttons">
+                                         <button className='delete-btn btn btn-danger'
+                        onClick={handleDelete}
+                    >
+                        Delete
+                    </button>
+                    <button className='edit-button'>
+                        <EditIcon />
+                        </button>   
+                    </div>
+
+                </Modal.Body>
             </Modal>
         </>
 

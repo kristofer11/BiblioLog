@@ -19,7 +19,9 @@ const Header = () => {
 
         <Navbar expand='md' className='navbar-light' >
             <Navbar.Brand>
-                <Link to="/my-library">
+                <Link 
+                to={loggedIn ? "/my-library" : "/"}
+                >
                     <h1>BookLog</h1>   
                 </Link>                 
             </Navbar.Brand>
