@@ -39,7 +39,7 @@
     width: 999px;
     min-height: 72vh;
     justify-content: space-evenly;
-    background-color: #80808077;
+    // background-color: #808080;
     border-radius: 11px;
     margin: 2rem 0.5rem;
     padding: 2rem;
@@ -51,15 +51,15 @@
     justify-content: start;
     gap: 2rem;
     padding: 0.5rem;
-    border: 1px solid green;
     width: 333px;
     max-width: 100vw;
     min-height: 138px;
     // max-height: 155px;
-    background-color: orange;
+    background-color: #56D494;
     margin: 0.5rem;
     border-radius: 6px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 6px 3px #35373C;
+    color: #FAFAF9;
 
     div h3 {
         font-size: 1.4rem;

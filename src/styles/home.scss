@@ -7,14 +7,18 @@
     width: fit-content;
     border-radius: 11px;
     box-shadow: 0 0 6px 3px #35373C;
-    background-color: #FAFAF999;
+    // background-color: hsla(60, 9%, 98%, 0.6);
+    background-color: #fafaf966;
 
     & a {
         text-decoration: none;
         color: #35373C;
         font-size: 2rem;
         width: fit-content;
+        background-color: #FAFAF9;
+        border-radius: 11px;
         padding-inline: 0.5rem;
+        margin: 0.5rem;
     }
 
     & a:hover {

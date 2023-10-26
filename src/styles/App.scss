@@ -1,12 +1,11 @@
 #root {
-    //   max-width: 1280px;
     margin: 0 auto;
     padding: 0;
     text-align: center;
-    // background: white;
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh;
 }
 
 html,
@@ -118,16 +117,17 @@ body {
 }
 
 .footer {
-    position: relative;
-    bottom: 0;
+    // position: relative;
+    // bottom: 0;
     width: 100%;
     height: 2.5rem;
     background-color: #102324;
     color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 2rem;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // padding-left: 2rem;
+    margin-top: auto;
 }
 
 .login-page-container {
@@ -152,8 +152,9 @@ form {
     max-width: 400px;
     border-radius: 11px;
     padding: 1rem;
+    border-radius: 11px;
     box-shadow: 0 0 6px 3px #35373C;
-    background-color: #FAFAF999;
+    background-color: #fafaf966;
     backdrop-filter: blur(6px);
 }
 
