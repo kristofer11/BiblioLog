@@ -98,15 +98,14 @@ const userSlice = createSlice({
             state.isLoggedIn = true;
         },
         clearUser: (state) => {
-            state.user.userName = null;
-            state.user.id = null;
-            state.isAuthenticated = false;
-            state.isLoading = false;
-            state.error = null;
-        },
+            Object.assign(state, initialState);
+          },
         setLoading: (state) => {
             state.isLoading = true;
         },
+        clearLoading: (state) => {
+            state.isLoading = false;
+        },        
         setError: (state, action) => {
             state.error = action.payload;
             state.isLoading = false;
@@ -125,6 +124,7 @@ const userSlice = createSlice({
         builder
             .addCase(login.pending, (state) => {
                 state.isLoading = true;
+                console.log(state.isLoading)
                 state.error = null;
             })
             .addCase(login.fulfilled, (state, action) => {
@@ -212,4 +212,5 @@ export const {
     setError,
     clearError,
     updateUser,
+    clearLoading,
 } = userSlice.actions;

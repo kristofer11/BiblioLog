@@ -1,7 +1,7 @@
 import { Form, Button } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { login, setUser } from '../redux/features/userSlice';
+import { login, clearUser, clearLoading, setLoading } from '../redux/features/userSlice';
 import { useNavigate } from 'react-router-dom';
 // import useLogin from '../utils/Login';
 import { clearLibrary } from '../redux/features/librarySlice';
@@ -21,12 +21,15 @@ const LoginForm = () => {
     const isAuthenticated = useSelector((state) => state.user.isAuthenticated)
     const isLoggedIn = useSelector((state) => state.user.isLoggedIn)
 
+    // dispatch(clearLoading())
+
     const handleLogin = async (e) => {
         e.preventDefault();
         const email = formData.email;
         const password = formData.password;
         
         dispatch(clearLibrary())
+        dispatch(setLoading())
         dispatch(login({ email, password }))
         navigate('/my-library')
     }
@@ -53,9 +56,11 @@ const LoginForm = () => {
 
     const loginError = useSelector((state) => state.user.error);
 
+
+    
     return (
         <>
-            {isLoading && <p>Loading...</p>}
+            {isLoading && <p className='loading-msg'>Loading...</p>}
             {loginError && <p style={{ color: 'red' }}>Error: {loginError}</p>}
             { !isLoggedIn && <Form
                 onSubmit={handleLogin}

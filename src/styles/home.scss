@@ -7,25 +7,35 @@
     width: fit-content;
     border-radius: 11px;
     box-shadow: 0 0 6px 3px #35373C;
-    background-color: #35373C99;
+    background-color: #FAFAF999;
 
-    & a{
+    & a {
         text-decoration: none;
-        color: #fff;
+        color: #35373C;
         font-size: 2rem;
         width: fit-content;
         padding-inline: 0.5rem;
     }
 
     & a:hover {
-        color: #000;
-        background-color: #fff;
+        color: #FAFAF9;
+        background-color: #35373C;
         border-radius: 11px;
     }
 }
 
-.welcomeMsg {
-    color: #0A201E;
+.welcome-message {
+    // color: #FAFAF9;
+    color: white;
     padding-left: 1rem;
     margin-top: 2rem;
+    text-shadow: -1px -1px 0 #35373C88, 1px -1px 0 #35373C88, -1px 1px 0 #35373C88, 1px 1px 0 #35373C88;
+
+    h3 {
+        font-size: 3.3rem;
+    }
+
+    h4 {
+        font-size: 2rem;
+    }
 }

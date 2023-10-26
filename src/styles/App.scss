@@ -20,8 +20,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../assets/books-and-lights.jpg');
-    filter: grayscale(77%);
+    background-image: url('../assets/bookshelf.jpg');
+    filter: grayscale(88%);
     background-size: cover;
     background-repeat: no-repeat;
     z-index: -1;
@@ -91,7 +91,7 @@ body {
     font-size: 3rem;
 
     &:hover {
-        color: green;
+        color: #35373C;
     }
 }
 
@@ -130,6 +130,13 @@ body {
     padding-left: 2rem;
 }
 
+.login-page-container {
+    
+    h1 {
+        color: white;
+    }
+}
+
 .formContainer {
     display: flex;
     flex-direction: column;
@@ -144,10 +151,19 @@ form {
     gap: .6rem;
     max-width: 400px;
     border-radius: 11px;
-    box-shadow: 0 0 6px 3px #113736;
     padding: 1rem;
-    background-color: #11373699;
+    box-shadow: 0 0 6px 3px #35373C;
+    background-color: #FAFAF999;
     backdrop-filter: blur(6px);
+}
+
+.loading-msg {
+    color: orange;
+    font-size: 1.2rem;
+    background-color: #35373C55;
+    padding: 0.5rem;
+    border-radius: 6px;
+    margin-top: 1rem;
 }
 
 label {

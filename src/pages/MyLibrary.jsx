@@ -30,20 +30,16 @@ const MyLibrary = () => {
     if (!token) {
         return (
             <>
-                <p style={{ color: 'red' }}>Please Login to view your library.</p>
+                <p className='login-msg'>Please Login to view your library.</p>
                 <LoginForm />
             </>
         )
     }
 
-    // if (!token) {
-    //     navigate('/login')
-    // }
-
     return (
         <div className='library-container'>
             <h1>MyLibrary</h1>
-            <h2 className='welcome-heading'>Welcome, userName</h2>
+            <h2 className='welcome-heading'>Welcome, {userName}</h2>
             <Button
                 className='newBookBtn'
                 onClick={handleShow}
@@ -62,7 +58,6 @@ const MyLibrary = () => {
                     />
                 </Modal.Body>
             </Modal>
-
         </div>
     )
 }
