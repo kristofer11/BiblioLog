@@ -18,6 +18,8 @@ const LoginForm = () => {
     const navigate = useNavigate();
     const userName = useSelector((state) => state.user.userName);
     const isLoading = useSelector((state) => state.user.isLoading);
+    const isAuthenticated = useSelector((state) => state.user.isAuthenticated)
+    const isLoggedIn = useSelector((state) => state.user.isLoggedIn)
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -55,7 +57,7 @@ const LoginForm = () => {
         <>
             {isLoading && <p>Loading...</p>}
             {loginError && <p style={{ color: 'red' }}>Error: {loginError}</p>}
-            { !isLoading && <Form
+            { !isLoggedIn && <Form
                 onSubmit={handleLogin}
             >
                 {/* {serverErrors && <p className="error-message text-danger">{serverErrors}</p>} */}
