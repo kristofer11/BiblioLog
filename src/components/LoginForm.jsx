@@ -8,7 +8,6 @@ import { clearLibrary } from '../redux/features/librarySlice';
 
 
 const LoginForm = () => {
-    // const { handleLogin } = useLogin();
 
     const [formData, setFormData] = useState({
         email: '',
@@ -18,6 +17,7 @@ const LoginForm = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const userName = useSelector((state) => state.user.userName);
+    const isLoading = useSelector((state) => state.user.isLoading);
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -53,8 +53,9 @@ const LoginForm = () => {
 
     return (
         <>
-            {loginError && <p style={{ color: 'red' }}>{loginError}</p>}
-            <Form
+            {isLoading && <p>Loading...</p>}
+            {loginError && <p style={{ color: 'red' }}>Error: {loginError}</p>}
+            { !isLoading && <Form
                 onSubmit={handleLogin}
             >
                 {/* {serverErrors && <p className="error-message text-danger">{serverErrors}</p>} */}
@@ -81,7 +82,7 @@ const LoginForm = () => {
                     />
                 </Form.Group>
                 <Button variant="primary" type="submit" className='formSubmitBtn'>Submit</Button>
-            </Form>
+            </Form>}
         </>
     )
 }
