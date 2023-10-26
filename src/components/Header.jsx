@@ -30,8 +30,8 @@ const Header = () => {
                 <Nav>
                     {/* <Nav.Link href="/">Home</Nav.Link> */}
                     <Link to="/my-library" className='nav-link'>My Library</Link>
-                    {!loggedIn && <Nav.Link href="/register">Register</Nav.Link>}
-                    {!loggedIn && <Nav.Link href="/login">Login</Nav.Link>}
+                    {!loggedIn && <Nav.Link href="/register" className='nav-link'>Register</Nav.Link>}
+                    {!loggedIn && <Nav.Link href="/login" className='nav-link'>Login</Nav.Link>}
                     {loggedIn && <Nav.Link onClick={(e) => {
                         e.preventDefault();
                         handleLogout();

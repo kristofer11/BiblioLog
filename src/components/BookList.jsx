@@ -10,6 +10,9 @@ const BookList = () => {
     const library = useSelector((state) => state.library.books)
 
     useEffect(() => {
+        if (!library) {
+            return
+        }        
         if (!library.length) {
             dispatch(getLibrary())
         }
@@ -27,7 +30,7 @@ const BookList = () => {
                     review={book.review}
                     bookId={book._id}
                 />
-            )) : <p>Error, no books to load...</p>}
+            )) : <p>No books to load yet...</p>}
         </div>
     )
 }

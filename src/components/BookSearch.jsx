@@ -51,8 +51,13 @@ function BookSearch({ setFormData, clearForm, handleClose, show, setShow, formDa
     const handleAddToLibrary = (book) => {
         setSelectedBook(book);
         setSelectedTitle(book.volumeInfo.title);
-        book.volumeInfo.authors[1] ? setSelectedAuthor(book.volumeInfo.authors.join(', ')) : setSelectedAuthor(book.volumeInfo.authors[0]);
-        setImg(book.volumeInfo.imageLinks.thumbnail)
+        if (book.volumeInfo.authors) {
+            book.volumeInfo.authors[1] ? setSelectedAuthor(book.volumeInfo.authors.join(', ')) : setSelectedAuthor(book.volumeInfo.authors[0]);            
+        } else {
+            setSelectedAuthor('Unknown')
+        }
+
+        book.volumeInfo.imageLinks ? setImg(book.volumeInfo.imageLinks.thumbnail) : setImg(NoImage)
         setBooks(books.filter((b) => b.id !== book.id));
         setShowSearchResults(false);
     };
@@ -70,7 +75,7 @@ function BookSearch({ setFormData, clearForm, handleClose, show, setShow, formDa
     const handleSubmit = (event) => {
         event.preventDefault();
         setShowSearchBar(false)
-        setImg(selectedBook.volumeInfo.imageLinks.thumbnail)
+        selectedBook.volumeInfo.imageLinks ? setImg(selectedBook.volumeInfo.imageLinks.thumbnail) : setImg(NoImage)
         console.log(img)
         // TODO: Add book to library with selectedBook, rating, and review
         setSelectedTitle('');
@@ -104,17 +109,17 @@ function BookSearch({ setFormData, clearForm, handleClose, show, setShow, formDa
             {selectedBook && (
                 <form onSubmit={handleSubmit}>
                     <h3>{selectedBook.volumeInfo.title}</h3>
-                    <p>{selectedBook.volumeInfo.authors.join(', ')}</p>
-                    <img src={selectedBook.volumeInfo.imageLinks.thumbnail} alt={selectedBook.volumeInfo.title} width='99' />
+                    <p>{ selectedBook.volumeInfo.authors ? selectedBook.volumeInfo.authors.join(', ') : 'unknown'}</p>
+                    <img src={selectedBook.volumeInfo.imageLinks ? selectedBook.volumeInfo.imageLinks.thumbnail : NoImage } alt={selectedBook.volumeInfo.title} width='99' />
                     <label>
                         Rating:
                         <output htmlFor="rating" style={{ marginLeft: '0.5rem', fontSize: '2rem', color: 'green' }}>{rating}</output>
 
                         <input type="range" min="0" max="5" id='rating' name='rating' default='5' value={rating} onChange={handleRatingChange} />
                     </label>
-                    <label>
+                    <label style={{width: '100%'}}>
                         Review:
-                        <textarea value={review} onChange={handleReviewChange} />
+                        <textarea className='review-input' value={review} onChange={handleReviewChange} />
                     </label>
                     <button type="submit">Add to Library</button>
                 </form>
