@@ -43,7 +43,7 @@ const MyLibrary = () => {
     return (
         <div className='library-container'>
             <h1>MyLibrary</h1>
-            <h1 style={{ color: 'pink' }}>{userName}</h1>
+            <h2 className='welcome-heading'>Welcome, {userName}</h2>
             <Button
                 className='newBookBtn'
                 onClick={handleShow}

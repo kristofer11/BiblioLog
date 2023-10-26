@@ -3,18 +3,29 @@
     max-width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 
     .newBookBtn {
         width: 133px;
         margin-inline: auto;
+        margin-top: 1rem;
     }
+}
+
+.welcome-heading {
+    font-size: 1.5rem;
 }
 
 .book-list {
     display: flex;
     flex-wrap: wrap;
-    margin-left: auto;
     max-width: 100%;
+    width: fit-content;
+    justify-content: space-evenly;
+    background-color: #80808077;
+    border-radius: 11px;
+    margin: 2rem 0.5rem;
+    padding-block: 2rem;
 }
 
 .bookItem {
@@ -22,18 +33,26 @@
     align-items: center;
     justify-content: start;
     gap: 2rem;
-    padding: 1rem;
+    padding: 0.5rem;
     border: 1px solid green;
-    width: 444px;
+    width: 333px;
     max-width: 100vw;
     background-color: orange;
-    margin: 1rem;
+    margin: 0.5rem;
     border-radius: 6px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 
+    div h3 {
+        font-size: 1.4rem;
+    }
+
+    div h4 {
+        font-size: 1.2rem;
+    }
+
     img {
         border-radius: 11px;
-        width: 77px;
+        width: 66px;
     }
 
     &:hover {
