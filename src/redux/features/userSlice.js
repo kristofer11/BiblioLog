@@ -191,6 +191,8 @@ const userSlice = createSlice({
                     state.id = action.payload._id;
                     state.isLoggedIn = true;
                     state.isAuthenticated = true;
+                } else {
+                    state.isLoading = false
                 }
 
             })
