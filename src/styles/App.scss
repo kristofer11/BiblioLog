@@ -1,22 +1,38 @@
 #root {
-//   max-width: 1280px;
-  margin: 0 auto;
-  padding: 0;
-  text-align: center;
-  background: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    //   max-width: 1280px;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    // background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
- html, body {
-    box-sizing: border-box;
- }
 
- * {
+html,
+body {
+    box-sizing: border-box;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/books-and-lights.jpg');
+    filter: grayscale(77%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+
+* {
     margin: 0;
 }
 
-html, body {
+html,
+body {
     height: 100%;
     padding: 0;
 }
@@ -42,6 +58,11 @@ html, body {
     text-decoration: none;
     background-color: #102324;
     width: 100%;
+    padding-inline: 4rem;
+
+    &.navbar-light {
+        padding-inline: 4rem;
+    }
 }
 
 .nav-link {
@@ -54,20 +75,30 @@ html, body {
 
 .custom-toggler .navbar-toggler-icon {
     filter: invert(100%)
-  }
+}
 
 .navbar-brand {
     text-decoration: none;
+
+    a {
+        text-decoration: none;
+    }
 }
 
 .navbar-brand h1 {
     color: #CACED4;
     padding-left: 1rem;
+    font-size: 3rem;
+
+    &:hover {
+        color: green;
+    }
 }
 
 .navbar-nav {
     display: flex;
     gap: 1rem;
+    font-size: 1.7rem;
 }
 
 .navbar-nav a {
@@ -80,6 +111,10 @@ html, body {
     color: #000;
     background-color: #fff;
     border-radius: 11px;
+}
+
+.navbar-collapse {
+    justify-content: flex-end;
 }
 
 .footer {
@@ -139,9 +174,16 @@ input {
     .navbar-nav {
         margin-left: 1rem;
     }
+
     .container {
         background-image: url(../images/mainbg-tall.png);
         background-size: cover;
         background-repeat: no-repeat;
+    }
+}
+
+@media (max-width: 758px) {
+    nav.navbar-light {
+        padding-inline: 0.4rem;
     }
 }

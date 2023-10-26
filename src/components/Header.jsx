@@ -22,7 +22,7 @@ const Header = () => {
                 <Link 
                 to={loggedIn ? "/my-library" : "/"}
                 >
-                    <h1>BookLog</h1>   
+                    <h1>BiblioLog</h1>   
                 </Link>                 
             </Navbar.Brand>
             <Navbar.Toggle aria-controls='responsive-navbar-nav' className='custom-toggler' />
