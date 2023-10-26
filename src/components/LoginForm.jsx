@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login, setUser } from '../redux/features/userSlice';
 import { useNavigate } from 'react-router-dom';
 // import useLogin from '../utils/Login';
+import { clearLibrary } from '../redux/features/librarySlice';
 
 
 const LoginForm = () => {
@@ -22,7 +23,8 @@ const LoginForm = () => {
         e.preventDefault();
         const email = formData.email;
         const password = formData.password;
-
+        
+        dispatch(clearLibrary())
         dispatch(login({ email, password }))
         navigate('/my-library')
     }

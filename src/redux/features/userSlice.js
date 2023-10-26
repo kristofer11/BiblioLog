@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
+import { clearLibrary } from './librarySlice';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-// import { clearLibrary } from './librarySlice';
 
 export const login = createAsyncThunk('user/login', async ({ email, password }) => {
 
@@ -33,6 +33,8 @@ export const login = createAsyncThunk('user/login', async ({ email, password }) 
 });
 
 export const logout = createAsyncThunk('user/logout', async () => {
+
+
     localStorage.removeItem('token');
     localStorage.removeItem('id');
 });
