@@ -93,7 +93,7 @@ const RegisterForm = () => {
                         Passwords do not match.
                     </Form.Control.Feedback>
                 </Form.Group>
-                <Button variant="primary" type="submit" className='formSubmitBtn' disabled={!isPasswordMatched()}>Submit</Button>
+                <Button variant="primary" type="submit" className='form-submit-btn' disabled={!isPasswordMatched()}>Submit</Button>
             </Form>
         </div>
     )

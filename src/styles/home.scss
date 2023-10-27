@@ -1,39 +1,67 @@
+.hero-div {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin-top: 2rem;
+    padding: 1rem;
+    border: 2px solid var(--accent-color);
+    border-radius: 0 22px 0 22px;
+    background-color: #FAFAF977;
+    margin-inline: 1rem;
+    margin-bottom: 2rem;
+
+    img {
+        min-height: 333px;
+        max-height: 555px;
+        max-width: 100%;
+        border-radius: 0 22px 0 22px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+}
+
 .homeLinks {
     display: flex;
     flex-direction: column;
-    // background: linear-gradient(to right, #4B7673 20%, #99A9AC);
-    margin-top: 2rem;
+    align-items: center;   
+    justify-content: center; 
     padding: 2rem 3rem;
-    width: fit-content;
     border-radius: 11px;
-    box-shadow: 0 0 6px 3px #35373C;
-    // background-color: hsla(60, 9%, 98%, 0.6);
-    background-color: #fafaf966;
+    // height: 444px;
+    // box-shadow: 0 0 6px 3px #35373C;
 
-    & a {
+    // background-color: var(--background-color);
+
+    a {
         text-decoration: none;
-        color: #35373C;
+        color: var(--text-color);
         font-size: 2rem;
         width: fit-content;
-        background-color: #FAFAF9;
+        background-color: var(--accent-color);
         border-radius: 11px;
         padding-inline: 0.5rem;
         margin: 0.5rem;
+        // box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+        &:active{
+            transform: scale(0.95);
+            background-color: var(--text-color);
+        }
+        &:hover{
+        color: var(--text-color);
+        background-color: var(--primary-color);
+        border-radius: 11px;            
+        }
     }
 
-    & a:hover {
-        color: #FAFAF9;
-        background-color: #35373C;
-        border-radius: 11px;
-    }
+    // & a:active {
+    //     transform: scale(0.9);
+    // }
 }
 
 .welcome-message {
     // color: #FAFAF9;
-    color: white;
+    color: var(--text-color);
     padding-left: 1rem;
     margin-top: 2rem;
-    text-shadow: -1px -1px 0 #35373C88, 1px -1px 0 #35373C88, -1px 1px 0 #35373C88, 1px 1px 0 #35373C88;
 
     h3 {
         font-size: 3.3rem;
@@ -42,4 +70,14 @@
     h4 {
         font-size: 2rem;
     }
+}
+
+.home-hero {
+    display: flex;
+    max-width: 100%;
+    width: 999px;
+
+    // img {
+    //     width: 111px;
+    // }
 }

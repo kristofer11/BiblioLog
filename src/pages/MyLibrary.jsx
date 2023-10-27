@@ -8,6 +8,7 @@ import BookList from '../components/BookList'
 import BookSearch from '../components/BookSearch'
 import { useNavigate } from 'react-router-dom'
 import '../styles/myLibrary.scss'
+import ReadingByWater from '../assets/readingbythewater.jpg'
 
 const MyLibrary = () => {
     const userName = useSelector((state) => state.user.userName);
@@ -29,10 +30,16 @@ const MyLibrary = () => {
 
     if (!token) {
         return (
-            <>
+            <div className='library-container'>
+                <h1>MyLibrary</h1>
                 <p className='login-msg'>Please Login to view your library.</p>
-                <LoginForm />
-            </>
+                <div className="my-library-login-div d-flex">
+                    <LoginForm />
+                    <img src={ReadingByWater} alt="man with cup of coffee reading book by the ocean"  />
+                </div>
+
+
+            </div>
         )
     }
 

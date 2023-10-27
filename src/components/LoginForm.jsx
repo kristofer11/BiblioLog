@@ -61,8 +61,8 @@ const LoginForm = () => {
     return (
         <>
             {isLoading && <p className='loading-msg'>Loading...</p>}
-            {loginError && <p style={{ color: 'red' }}>Error: {loginError}</p>}
-            { !isLoggedIn && <Form
+            {loginError && <p className='loading-msg' >Error: {loginError}</p>}
+            { !isLoggedIn && !isLoading && <Form
                 onSubmit={handleLogin}
             >
                 {/* {serverErrors && <p className="error-message text-danger">{serverErrors}</p>} */}
@@ -88,7 +88,7 @@ const LoginForm = () => {
                     // isInvalid={!!formErrors.password}
                     />
                 </Form.Group>
-                <Button variant="primary" type="submit" className='formSubmitBtn'>Submit</Button>
+                <Button  type="submit" className='form-submit-btn mt-auto'>Submit</Button>
             </Form>}
         </>
     )
