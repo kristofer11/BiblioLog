@@ -52,7 +52,7 @@ function BookSearch({ setFormData, clearForm, handleClose, show, setShow, formDa
         setSelectedBook(book);
         setSelectedTitle(book.volumeInfo.title);
         if (book.volumeInfo.authors) {
-            book.volumeInfo.authors[1] ? setSelectedAuthor(book.volumeInfo.authors.join(', ')) : setSelectedAuthor(book.volumeInfo.authors[0]);            
+            book.volumeInfo.authors[1] ? setSelectedAuthor(book.volumeInfo.authors.join(', ')) : setSelectedAuthor(book.volumeInfo.authors[0]);
         } else {
             setSelectedAuthor('Unknown')
         }
@@ -107,17 +107,23 @@ function BookSearch({ setFormData, clearForm, handleClose, show, setShow, formDa
             }
             {showError && <p>No books found, try again.</p>}
             {selectedBook && (
-                <form onSubmit={handleSubmit}>
-                    <h3>{selectedBook.volumeInfo.title}</h3>
-                    <p>{ selectedBook.volumeInfo.authors ? selectedBook.volumeInfo.authors.join(', ') : 'unknown'}</p>
-                    <img src={selectedBook.volumeInfo.imageLinks ? selectedBook.volumeInfo.imageLinks.thumbnail : NoImage } alt={selectedBook.volumeInfo.title} width='99' />
+                <form className='submit-form' onSubmit={handleSubmit}>
+                    <div className='d-flex gap-3 book-info'>
+                        <img src={selectedBook.volumeInfo.imageLinks ? selectedBook.volumeInfo.imageLinks.thumbnail : NoImage} alt={selectedBook.volumeInfo.title} width='99' />
+                        <div className='title-author'>
+                            <h3>{selectedBook.volumeInfo.title}</h3>
+                            <p>{selectedBook.volumeInfo.authors ? selectedBook.volumeInfo.authors.join(', ') : 'unknown'}</p>
+                        </div>
+                    </div>
+
+
                     <label>
                         Rating:
                         <output htmlFor="rating" style={{ marginLeft: '0.5rem', fontSize: '2rem', color: 'green' }}>{rating}</output>
 
                         <input type="range" min="0" max="5" id='rating' name='rating' default='5' value={rating} onChange={handleRatingChange} />
                     </label>
-                    <label style={{width: '100%'}}>
+                    <label style={{ width: '100%' }}>
                         Review:
                         <textarea className='review-input' value={review} onChange={handleReviewChange} />
                     </label>
@@ -131,20 +137,20 @@ function BookSearch({ setFormData, clearForm, handleClose, show, setShow, formDa
                 <ul className='result-list'>
                     {books.map((book) => (
                         <li key={book.id}>
-                                <img
-                                    src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : NoImage}
-                                    alt={book.volumeInfo.title}
-                                />                            
+                            <img
+                                src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : NoImage}
+                                alt={book.volumeInfo.title}
+                            />
                             <div>
 
                                 <h3>{book.volumeInfo.title}</h3>
-                            <p>
-                                {book.volumeInfo.authors ? (book.volumeInfo.authors.length > 1 ? book.volumeInfo.authors.join(', ') : book.volumeInfo.authors) : null}
-                            </p>    
-                            {/* <p>
+                                <p>
+                                    {book.volumeInfo.authors ? (book.volumeInfo.authors.length > 1 ? book.volumeInfo.authors.join(', ') : book.volumeInfo.authors) : null}
+                                </p>
+                                {/* <p>
                                 {book.volumeInfo.authors.length > 1 ? `By ${book.volumeInfo.authors.join(', ')}` : `By ${book.volumeInfo.authors}`}
                             </p>      */}
-                            <button onClick={() => handleAddToLibrary(book)}>Add to Library</button>                                                       
+                                <button onClick={() => handleAddToLibrary(book)}>Add to Library</button>
                             </div>
 
                             <hr />
