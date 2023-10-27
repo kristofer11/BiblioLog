@@ -54,7 +54,7 @@ const BookItem = ({ title, author, rating, review, bookId, img }) => {
                 <Modal.Header closeButton ></Modal.Header>
                 <Modal.Title>{title}</Modal.Title>
                 <Modal.Body>
-                    <img src={img} ></img>
+                    <img src={img} alt={`Cover of ${title} by ${author}.`} />
 
                     <div>
                         <p className='author'>Author: {author}</p>

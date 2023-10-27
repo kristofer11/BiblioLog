@@ -31,7 +31,7 @@ const MyLibrary = () => {
     if (!token) {
         return (
             <div className='library-container'>
-                <h1>MyLibrary</h1>
+                <h1>My Library</h1>
                 <p className='login-msg'>Please Login to view your library.</p>
                 <div className="my-library-login-div d-flex">
                     <LoginForm />
