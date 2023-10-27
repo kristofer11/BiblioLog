@@ -5,6 +5,8 @@ import { useState } from 'react'
 import { Modal } from 'react-bootstrap'
 import EditIcon from '../assets/icons/edit'
 
+//ADD THE EDIT ICONS BACK IN ONCE EDIT FUNCTIONALITY IS IN PLACE
+
 const BookItem = ({ title, author, rating, review, bookId, img }) => {
     const dispatch = useDispatch()
 
@@ -53,19 +55,24 @@ const BookItem = ({ title, author, rating, review, bookId, img }) => {
                 <Modal.Title>{title}</Modal.Title>
                 <Modal.Body>
                     <img src={img} ></img>
-                    <p>Author: {author}</p>
-                    <p>
-                        Rating: {rating}
-                        <span className='modal-edit-btn' onClick={() => console.log('clicked')}>
+
+                    <div>
+                        <p className='author'>Author: {author}</p>
+                        <p className='rating'>
+                            Rating: {rating}
+                            {/* <span className='modal-edit-btn' onClick={() => console.log('clicked')}>
                             <EditIcon />
-                        </span>
-                    </p>
-                    <p>
-                        Review: {review}
-                        <span className='modal-edit-btn' onClick={() => console.log('clicked')}>
+                        </span> */}
+                        </p>
+                        <p className='review'>
+                            Review: {review}
+                            {/* <span className='modal-edit-btn' onClick={() => console.log('clicked')}>
                             <EditIcon />
-                        </span>
-                    </p>
+                        </span> */}
+                        </p>
+                    </div>
+
+
 
                     <div className="buttons">
                         <button className='delete-btn btn btn-danger'

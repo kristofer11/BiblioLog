@@ -109,17 +109,39 @@
     }
 }
 
+.modal-content {
+    background-color: var(--secondary-color) !important;
+}
+
 .modal-title {
     text-align: center;
+    color: var(--text-color) !important;
+    font-size: 2rem !important;
 }
 
 .modal-body {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    align-items: end;
+    gap: 1rem;
+
+    div {
+        
+        .author {
+            font-size: 1.2rem;
+            color: var(--text-color);
+        }
+        .rating {
+            font-size: 1.2rem;
+            color: var(--text-color); 
+        }
+        .review {
+            font-size: 1.2rem;
+            color: var(--text-color); 
+        }
+    }
 
     img {
-        max-width: 111px;
+        max-width: 133px;
     }
 
     .buttons {

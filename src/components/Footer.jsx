@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer class='footer'>The Footer</footer>
+    <footer class='footer'>© 2023 Kris Hvattum</footer>
   )
 }
 
