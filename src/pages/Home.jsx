@@ -3,7 +3,7 @@ import '../styles/home.scss';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import ReadingByWater from '../assets/readingbythewater.jpg';
-import GirlWithBoyBook from '../assets/girlwithboybook.png';
+import GirlWithBoyBook from '../assets/girlWithBoyBook.png';
 
 const Home = () => {
     const dispatch = useDispatch()
