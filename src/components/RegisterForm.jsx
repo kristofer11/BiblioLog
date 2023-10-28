@@ -21,7 +21,7 @@ const RegisterForm = () => {
         e.preventDefault();
         console.log('Registering user:', formData);
         dispatch(register(formData))
-
+        router('/myLibrary')
     }
 
     const handleChange = (event) => {

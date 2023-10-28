@@ -39,6 +39,7 @@ export const logout = createAsyncThunk('user/logout', async () => {
 });
 
 export const register = createAsyncThunk('user/register', async ({ name, email, password }) => {
+    const router = useNavigate();
     const response = await fetch(`https://library-api-1iik.onrender.com/api/users`, {
         method: 'POST',
         headers: {
@@ -57,6 +58,7 @@ export const register = createAsyncThunk('user/register', async ({ name, email, 
     const id = data._id;
     localStorage.setItem('token', token);
     localStorage.setItem('id', id)
+    Navigate('/myLibrary')
     return data;
 
 });
