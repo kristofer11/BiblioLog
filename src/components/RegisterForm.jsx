@@ -17,11 +17,27 @@ const RegisterForm = () => {
         confirmPassword: ''
     });
 
-    const handleRegister = async (e) => {
+    // const handleRegister = (e) => {
+    //     e.preventDefault();
+    //     console.log('Registering user:', formData);
+    //     const toMyLibrary = () => {router('/my-library')}
+    //     dispatch(register(formData))
+    // }
+
+    const handleRegister = (e) => {
         e.preventDefault();
         console.log('Registering user:', formData);
-        await dispatch(register(formData)).then(() => {router('/myLibrary')})
-    }
+
+        const toMyLibrary = () => {router('/my-library')}
+        dispatch(register(formData))
+            .then((response) => {
+                // Route to '/my-library' after a successful registration
+                toMyLibrary();
+            })
+            .catch((error) => {
+                console.error('Registration error:', error);
+            });
+    };
 
     const handleChange = (event) => {
         setFormData({
