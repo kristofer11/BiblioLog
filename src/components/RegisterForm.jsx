@@ -17,11 +17,11 @@ const RegisterForm = () => {
         confirmPassword: ''
     });
 
-    const handleRegister = (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
         console.log('Registering user:', formData);
-        dispatch(register(formData))
-        router('/myLibrary')
+        await dispatch(register(formData));
+        router('/myLibrary');
     }
 
     const handleChange = (event) => {

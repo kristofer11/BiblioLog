@@ -45,7 +45,7 @@ const MyLibrary = () => {
 
     return (
         <div className='library-container'>
-            <h1>MyLibrary</h1>
+            <h1>My Library</h1>
             <h2 className='welcome-heading'>Welcome, {userName}</h2>
             <Button
                 className='newBookBtn'
