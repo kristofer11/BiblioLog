@@ -20,8 +20,7 @@ const RegisterForm = () => {
     const handleRegister = async (e) => {
         e.preventDefault();
         console.log('Registering user:', formData);
-        await dispatch(register(formData));
-        router('/myLibrary');
+        await dispatch(register(formData)).then(() => {router('/myLibrary')})
     }
 
     const handleChange = (event) => {
