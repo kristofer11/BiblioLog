@@ -7,6 +7,7 @@ import { register } from '../redux/features/userSlice';
 const RegisterForm = () => {
     const router = useNavigate();
     const dispatch = useDispatch();
+    const isLoading = useSelector((state) => state.user.isLoading);
 
     const registerError = useSelector((state) => state.user.error);
 
@@ -17,12 +18,7 @@ const RegisterForm = () => {
         confirmPassword: ''
     });
 
-    // const handleRegister = (e) => {
-    //     e.preventDefault();
-    //     console.log('Registering user:', formData);
-    //     const toMyLibrary = () => {router('/my-library')}
-    //     dispatch(register(formData))
-    // }
+
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -31,7 +27,6 @@ const RegisterForm = () => {
         const toMyLibrary = () => {router('/my-library')}
         dispatch(register(formData))
             .then((response) => {
-                // Route to '/my-library' after a successful registration
                 toMyLibrary();
             })
             .catch((error) => {
@@ -53,7 +48,7 @@ const RegisterForm = () => {
     return (
         <div>
             {registerError && <p style={{ color: 'red' }}>{registerError}</p>}
-
+            {isLoading && <p className='loading-msg-register'>Loading your library...</p>}
             <Form
                 onSubmit={(e) => {
                     handleRegister(e)
