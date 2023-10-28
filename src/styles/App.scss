@@ -91,7 +91,7 @@ body {
 }
 
 .custom-toggler .navbar-toggler-icon {
-    filter: invert(100%)
+    filter: invert(100%);
 }
 
 .navbar-brand {
@@ -272,5 +272,26 @@ input {
 @media (max-width: 758px) {
     nav.navbar-light {
         padding-inline: 0.4rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .navbar {
+        gap: 0.25rem;
+        h1{
+            padding-left: 0;
+        }
+    }
+
+    .navbar.navbar-light {
+        padding-inline: 0.2rem;
+    }
+}
+
+@media (max-width: 444px) {
+    .navbar {
+        h1 {
+            font-size: 2.5rem;
+        }
     }
 }
