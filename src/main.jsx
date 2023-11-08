@@ -6,6 +6,10 @@ import { BrowserRouter as Router} from 'react-router-dom'
 import store from './redux/store.js';
 import { Provider } from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { inject } from '@vercel/analytics';
+
+//ENABLES VERCEL ANALYTICS
+inject();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
